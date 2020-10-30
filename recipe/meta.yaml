@@ -23,8 +23,8 @@ requirements:
     - pip
   run:
     - python
-    - async_generator ==1.10; python_version<"3.7"
-    - dataclasses ==0.5; python_version<"3.7"
+    - async_generator ==1.10  # [py<37]
+    - dataclasses ==0.5  # [py<37]
     - kafka-python >=2.0.0
     - zlib
 
