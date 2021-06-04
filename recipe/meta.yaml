@@ -1,5 +1,5 @@
 {% set name = "aiokafka" %}
-{% set version = "0.7.0" %}
+{% set version = "0.7.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 2a4bf3a7afc6406cb37c153256c35629c1d69caf63e4a3b5b1c3863d97a17b74
+  sha256: b5a6fb1cfd77eac4b397ef5af3765d1d881c86b157137b12ca4f12aef1db433c
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
@@ -37,7 +37,7 @@ about:
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
-  summary: 'asyncio client for Kafka'
+  summary: asyncio client for Kafka
 
   description: |
     AIOKafkaProducer is a high-level, asynchronous message producer.
