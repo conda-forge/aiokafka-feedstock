@@ -10,7 +10,7 @@ source:
   sha256: a8fc41d18731d8879483aecb93ae7ebf5457f63daf4c8923ddc046792c2c3096
 
 build:
-  number: 3
+  number: 4
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
@@ -21,6 +21,7 @@ requirements:
     - cython >=0.29.0
     - python
     - pip
+    - zlib
   run:
     - python
     - async_generator ==1.10  # [py<37]
