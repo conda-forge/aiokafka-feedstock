@@ -1,5 +1,5 @@
 {% set name = "aiokafka" %}
-{% set version = "0.8.0" %}
+{% set version = "0.8.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 49b30479f68ba9a484a0e3362fb9c48797d7320066db9fcd53e755451f389acb
+  sha256: d300188e358cd29989c817f6ee2a2965a039e5a71de8ade6f80f02ebb9bd07b8
 
 build:
   number: 0
@@ -24,10 +24,8 @@ requirements:
     - zlib
   run:
     - python
-    - async_generator ==1.10  # [py<37]
     - async-timeout
-    - dataclasses ==0.5  # [py<37]
-    - kafka-python >=2.0.0
+    - kafka-python >=2.0.2
     - packaging
     - zlib
 
