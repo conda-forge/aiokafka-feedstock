@@ -24,10 +24,8 @@ requirements:
     - zlib
   run:
     - python
-    - async_generator ==1.10  # [py<37]
     - async-timeout
-    - dataclasses ==0.5  # [py<37]
-    - kafka-python >=2.0.0
+    - kafka-python >=2.0.2
     - packaging
     - zlib
 
