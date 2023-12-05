@@ -25,7 +25,6 @@ requirements:
   run:
     - python
     - async-timeout
-    - kafka-python >=2.0.2
     - packaging
     - zlib
 
