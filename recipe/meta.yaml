@@ -1,5 +1,5 @@
 {% set name = "aiokafka" %}
-{% set version = "0.10.0" %}
+{% set version = "0.11.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 7ce35563f955490b43190e3389b5f3d92d50e22b32d1a40772fd14fb1d50c5db
+  sha256: f2def07fe1720c4fe37c0309e355afa9ff4a28e0aabfe847be0692461ac69352
 
 build:
   number: 0
@@ -17,6 +17,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
 
   host:
     - cython >=0.29.0
