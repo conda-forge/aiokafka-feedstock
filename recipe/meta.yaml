@@ -18,7 +18,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
-
+    - zlib
   host:
     - cython >=3.0.5
     - python
@@ -27,6 +27,7 @@ requirements:
     - python
     - async-timeout
     - packaging
+    - zlib
 
 test:
   imports:
