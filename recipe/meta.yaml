@@ -1,5 +1,5 @@
 {% set name = "aiokafka" %}
-{% set version = "0.11.0" %}
+{% set version = "0.12.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: f2def07fe1720c4fe37c0309e355afa9ff4a28e0aabfe847be0692461ac69352
+  sha256: 62423895b866f95b5ed8d88335295a37cc5403af64cb7cb0e234f88adc2dff94
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
   skip: true  # [win]
 
