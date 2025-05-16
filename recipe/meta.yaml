@@ -28,6 +28,7 @@ requirements:
     - python
     - async-timeout
     - packaging
+    - typing-extensions
     - zlib
 
 test:
