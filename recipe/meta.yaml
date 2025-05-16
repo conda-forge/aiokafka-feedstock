@@ -10,12 +10,16 @@ source:
   sha256: 62423895b866f95b5ed8d88335295a37cc5403af64cb7cb0e234f88adc2dff94
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
   skip: true  # [win]
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - cython >=3.0.5                         # [build_platform != target_platform]
+    - zlib                                   # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
   host:
@@ -28,7 +32,7 @@ requirements:
     - python
     - async-timeout
     - packaging
-    - zlib
+    - typing-extensions
 
 test:
   imports:
