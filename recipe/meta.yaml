@@ -29,7 +29,6 @@ requirements:
     - async-timeout
     - packaging
     - typing-extensions
-    - zlib
 
 test:
   imports:
