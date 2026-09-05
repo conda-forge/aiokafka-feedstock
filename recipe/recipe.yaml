@@ -13,19 +13,17 @@ source:
   sha256: 8ffdc945798ba4d3d132b705d4244d0a1f493925efb57c637a2ca88ee82794e1
 
 build:
-  number: 2
+  number: 3
   script: ${{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
     - if: build_platform != target_platform
-      then: python
-    - if: build_platform != target_platform
-      then: cross-python_${{ target_platform }}
-    - if: build_platform != target_platform
-      then: cython >=3.0.5
-    - if: build_platform != target_platform
-      then: zlib
+      then:
+        - python
+        - cross-python_${{ target_platform }}
+        - cython >=3.0.5
+        - zlib
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
   host:
