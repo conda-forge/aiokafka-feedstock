@@ -14,7 +14,8 @@ source:
 
 build:
   number: 0
-  script: ${{ PYTHON }} -m pip install . -vv
+  skip: match(python, "<3.11")
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   build:
@@ -30,18 +31,21 @@ requirements:
     - cython >=3.0.5
     - python
     - pip
-    - setuptools
+    - setuptools >=77
     - zlib
   run:
     - python
-    - async-timeout
-    - packaging
-    - typing-extensions
+    - if: match(python, "<3.12")
+      then: typing-extensions >=4.6.0
 
 tests:
   - python:
       imports:
         - aiokafka
+        - aiokafka.record._crecords.cutil
+        - aiokafka.record._crecords.default_records
+        - aiokafka.record._crecords.legacy_records
+        - aiokafka.record._crecords.memory_records
       pip_check: true
 
 about:
