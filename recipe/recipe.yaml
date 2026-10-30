@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: aiokafka
-  version: "0.14.0"
+  version: "0.15.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,11 +10,14 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 8ffdc945798ba4d3d132b705d4244d0a1f493925efb57c637a2ca88ee82794e1
+  sha256: 8457e45565544c0888679943a0de2a284526d2ce489ad861f4b740f2f58b5dd0
+  patches:
+    # Regenerate platform-specific Cython sources instead of reusing Linux C files on Windows.
+    - regenerate-cython-sources.patch
 
 build:
-  number: 3
-  script: ${{ PYTHON }} -m pip install . -vv
+  number: 0
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   build:
@@ -30,18 +33,21 @@ requirements:
     - cython >=3.0.5
     - python
     - pip
-    - setuptools
+    - setuptools >=77
     - zlib
   run:
     - python
-    - async-timeout
-    - packaging
-    - typing-extensions
+    - if: match(python, "<3.12")
+      then: typing-extensions >=4.6.0
 
 tests:
   - python:
       imports:
         - aiokafka
+        - aiokafka.record._crecords.cutil
+        - aiokafka.record._crecords.default_records
+        - aiokafka.record._crecords.legacy_records
+        - aiokafka.record._crecords.memory_records
       pip_check: true
 
 about:
