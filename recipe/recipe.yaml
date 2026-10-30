@@ -11,10 +11,12 @@ package:
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
   sha256: 8457e45565544c0888679943a0de2a284526d2ce489ad861f4b740f2f58b5dd0
+  patches:
+    # Regenerate platform-specific Cython sources instead of reusing Linux C files on Windows.
+    - regenerate-cython-sources.patch
 
 build:
   number: 0
-  skip: match(python, "<3.11")
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
